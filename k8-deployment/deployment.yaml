@@ -16,13 +16,13 @@ spec:
     spec:
       containers:
       - name: api
-        image: <image>
+        image: abhinayrimil/python-api
         ports:
-        - containerPort: 5000
+        - containerPort: 80
         resources:
           limits:
             cpu: 200m
-            memory: 500Mi
-          requests: 
-            cpu: 200m
-            memory: 500Mi
+            memory: 300Mi
+          requests:
+            cpu: 100m
+            memory: 200Mi
