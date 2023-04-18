@@ -1,13 +1,13 @@
 provider "aws" {
-  access_key = "AKIAZAGN6KWY454UIZRF"
-  secret_key = "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"
+  access_key = "xxxxxxxxxxxxxxxx"
+  secret_key = "xxxxxxxxxxxxxxxx"
   region     = "ap-south-1"
 }
 
 resource "aws_instance" "ubuntu" {
   ami             = "ami-03a933af70fa97ad2"
   instance_type   = "t2.micro"
-  key_name        = "task"
+  key_name        = "key_name"
   security_groups = ["launch-wizard-8"]
   tags = {
     Name = "Ubuntu VM"
@@ -16,7 +16,7 @@ resource "aws_instance" "ubuntu" {
 connection {
   type        = "ssh"
   user        = "ubuntu"
-  private_key = file("task.pem")
+  private_key = file("key.pem")
   host        = self.public_ip
  }
 
