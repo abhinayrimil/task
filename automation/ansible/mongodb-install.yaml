@@ -1,0 +1,27 @@
+---
+- name: Install MongoDB(5.0) on Ubuntu
+  hosts: mongodb-servers
+  become: true
+
+  tasks:
+  - name: Import MongoDB public GPG key
+    apt_key:
+      url: https://www.mongodb.org/static/pgp/server-5.0.asc
+      state: present
+
+  - name: Add MongoDB repository to sources.list.d
+    apt_repository:
+      repo: deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu {{ ansible_distribution_release }}/mongodb-org/5.0 multiverse
+      state: present
+      filename: mongodb-org-5.0.list
+
+  - name: Install MongoDB
+    apt:
+      name: mongodb-org
+      state: present
+
+  - name: Start MongoDB service
+    service:
+      name: mongod
+      state: started
+      enabled: true

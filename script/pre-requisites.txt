@@ -1,0 +1,9 @@
+1. Make sure the following binaries are present where the script is running.
+
+- mongodump
+- s3cmd
+
+2. Make sure to assign configure a user with proper IAM permissions to interact with the S3 bucket.
+
+$ s3cmd --configure
+
